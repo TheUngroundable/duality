@@ -18,12 +18,6 @@ public class GameManager : MonoBehaviour
     {
         CreateApple(PlayerNumberEnum.Player1);
         CreateApple(PlayerNumberEnum.Player2);
-        CreateApple(PlayerNumberEnum.Player1);
-        CreateApple(PlayerNumberEnum.Player2);
-        CreateApple(PlayerNumberEnum.Player1);
-        CreateApple(PlayerNumberEnum.Player2);
-        CreateApple(PlayerNumberEnum.Player1);
-        CreateApple(PlayerNumberEnum.Player2);
     }
 
     public void CreateApple(PlayerNumberEnum playerNumber)
@@ -42,7 +36,6 @@ public class GameManager : MonoBehaviour
     {
         PlayerNumberEnum randomPlayerNumber =
             (PlayerNumberEnum) Random.Range(0, 2);
-        Debug.Log("Creating random apple for " + randomPlayerNumber);
         CreateApple (randomPlayerNumber);
     }
 }
