@@ -15,10 +15,5 @@ public class SnakeCollision : MonoBehaviour
     {
         snakeController
             .CollisionDetection(collision.gameObject.tag, collision.gameObject);
-        if (collision.gameObject.tag == "Apple")
-        {
-            collision.gameObject.GetComponent<Collider>().enabled = false;
-            Destroy(collision.gameObject);
-        }
     }
 }

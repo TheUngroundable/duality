@@ -6,6 +6,8 @@ public class Apple : MonoBehaviour
 {
     public PlayerNumberEnum playerNumber;
 
+    private GameManager gameManager;
+
     public int score = 1;
 
     public bool white;
@@ -18,11 +20,17 @@ public class Apple : MonoBehaviour
 
     public void Start()
     {
+        gameManager = GameObject.FindObjectOfType<GameManager>();
+
         if (white)
+        {
             transform.GetComponent<MeshRenderer>().material = matW;
+        }
         else
+        {
             transform.GetComponent<MeshRenderer>().material = matB;
-        startPosition = transform.position; //per l'animazione di movimento
+        }
+        startPosition = transform.position;
     }
 
     public void Update()
@@ -36,7 +44,7 @@ public class Apple : MonoBehaviour
 
     public void DestroyApple()
     {
-        //chiama la creazione di un altra mela opposta di colore
-        GameObject.FindObjectOfType<GameManager>().CreateApple(!white);
+        this.gameObject.GetComponent<Collider>().enabled = false;
+        Destroy(this.gameObject);
     }
 }

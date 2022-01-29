@@ -119,14 +119,20 @@ public class SnakeController : MonoBehaviour
         IsInverted = false;
     }
 
-    public void CollisionDetection(string hitObj, GameObject col)
+    public void CollisionDetection(string collisionTag, GameObject collision)
     {
-        switch (hitObj)
+        switch (collisionTag)
         {
             case "Apple":
-                AddNewSegment();
+                EatApple(collision.GetComponent<Apple>());
                 break;
         }
+    }
+
+    public void EatApple(Apple apple)
+    {
+        GrowSnake();
+        apple.DestroyApple();
     }
 
     public void TerrainHitted(GameObject curTer)
