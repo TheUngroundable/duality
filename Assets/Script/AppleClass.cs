@@ -8,20 +8,24 @@ public class AppleClass : MonoBehaviour
     public bool white;
     public Material matW;
     public Material matB;
-
+    private Vector3 startPosition;  
     public void Start()
     {
         if(white) transform.GetComponent<MeshRenderer> ().material = matW;
         else  transform.GetComponent<MeshRenderer> ().material = matB;
+        startPosition = transform.position; //per l'animazione di movimento
     }
 
     public void Update()
     {
         transform.Rotate(0,0,50*Time.deltaTime); 
-    }
+        transform.position = new Vector3(startPosition.x, startPosition.y + Mathf.Sin(Time.time * 5)/6, startPosition.z);
+
+     }
 
     public void DestroyApple()
     {
+        //chiama la creazione di un altra mela opposta di colore
         GameObject.FindObjectOfType<GameManager>().CreateApple(!white);
     }
 }
