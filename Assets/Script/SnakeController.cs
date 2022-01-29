@@ -128,14 +128,21 @@ public class SnakeController : MonoBehaviour
             case "Apple":
                 EatApple(collision.GetComponent<Apple>());
                 break;
+            case "Player":
+                EatPlayer(collision.GetComponent<SnakeController>());
+                break;
             case "Wall":
-                Debug.Log("muro toccato ");
                 ChangeDirection();
                 break;
         }
     }
 
-    public void EatApple(Apple apple)
+    private void EatPlayer(SnakeController player)
+    {
+        player.ShrinkSnake();
+    }
+
+    private void EatApple(Apple apple)
     {
         GrowSnake();
         apple.DestroyApple();
@@ -155,7 +162,6 @@ public class SnakeController : MonoBehaviour
 
     public void ChangeDirection()
     {
-        Debug.Log("change dire");
         SnakePrefab.transform.Rotate(Vector3.up * 180f);
     }
 }
