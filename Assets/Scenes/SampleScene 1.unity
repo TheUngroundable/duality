@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1671408176734567629, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d8425e2bcae6f4ec1a0d3d6c4442ec0d, type: 2}
     - target: {fileID: 5478312492343469824, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: m_Name
       value: Player 2
@@ -140,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5478312492343469826, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5478312492343469826, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -182,6 +186,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: Gap
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: BodySpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: MoveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: SteerSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: PlayerColor
+      value: 
+      objectReference: {fileID: 2100000, guid: d8425e2bcae6f4ec1a0d3d6c4442ec0d, type: 2}
     - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: PlayerNumber
       value: 1
@@ -566,6 +590,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1671408176734567629, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c27f4d9e6f06644ac9eca49e55c68109, type: 2}
     - target: {fileID: 5478312492343469824, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: m_Name
       value: Player 1
@@ -576,7 +604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5478312492343469826, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5478312492343469826, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -618,5 +646,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: Gap
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: BodySpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: MoveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: SteerSpeed
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: PlayerColor
+      value: 
+      objectReference: {fileID: 2100000, guid: c27f4d9e6f06644ac9eca49e55c68109, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
