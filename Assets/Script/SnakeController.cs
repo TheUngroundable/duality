@@ -1,228 +1,225 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using UnityEngine.UI;
 
-public class SnakeController : MonoBehaviour
-{
-    public Material PlayerColor;
-
-    public Text scoreText;
-
-    private bool IsInvincible = false;
-
-    public PlayerNumberEnum playerNumber;
-
-    public bool IsInverted = false;
-
-    public float MoveSpeed = 5;
-
-    public float SteerSpeed = 180;
-
-    public float BodySpeed = 5;
-
-    public int Gap = 10;
-
-    private GameManager gameManager;
-
-    public int Length;
-
-    // References
-    public GameObject SnakePrefab;
-
-    public GameObject BodyPrefab;
-
-    // Lists
-    private List<GameObject> BodyParts = new List<GameObject>();
-
-    private List<Vector3> PositionsHistory = new List<Vector3>();
-
-    public GameObject terrain;
-    public GameObject terrainD;
-
-    public GameObject rotAnim;
-
-    void Start()
+    public class SnakeController : MonoBehaviour
     {
-        gameManager = GameObject.FindObjectOfType<GameManager>();
+        public Material PlayerColor;
 
-        Length = gameManager.InitialLength;
-        for (int i = 0; i < gameManager.InitialLength; i++)
+        public Text scoreText;
+
+        private bool IsInvincible = false;
+
+        public PlayerNumberEnum playerNumber;
+
+        public bool IsInverted = false;
+
+        public float MoveSpeed = 5;
+
+        public float SteerSpeed = 180;
+
+        public float BodySpeed = 5;
+
+        public int Gap = 10;
+
+        private GameManager gameManager;
+
+        public int Length;
+
+        // References
+        public GameObject SnakePrefab;
+
+        public GameObject BodyPrefab;
+
+        // Lists
+        private List<GameObject> BodyParts = new List<GameObject>();
+
+        private List<Vector3> PositionsHistory = new List<Vector3>();
+
+        public List<GameObject> terrains = new List<GameObject>();
+
+        public GameObject rotAnim;
+
+        void Start()
+        {
+            gameManager = GameObject.FindObjectOfType<GameManager>();
+
+            Length = gameManager.InitialLength;
+            for (int i = 0; i < gameManager.InitialLength; i++)
+            {
+                GrowSnake();
+            }
+        }
+
+        public void AddNewSegment()
         {
             GrowSnake();
         }
-    }
 
-    public void AddNewSegment()
-    {
-        GrowSnake();
-    }
-
-    void FixedUpdate()
-    {
-        Length = BodyParts.Count;
-        scoreText.text = Length.ToString();
-        if (Length >= gameManager.Goal)
+        void FixedUpdate()
         {
-            gameManager.EndGame();
+            Length = BodyParts.Count;
+            scoreText.text = Length.ToString();
+            if (Length >= gameManager.Goal)
+            {
+                gameManager.EndGame();
+            }
+
+            Vector3 direction = SnakePrefab.transform.forward;
+
+            // Steer
+            float steerDirection = Input.GetAxis(playerNumber.ToString()); // Returns value -1, 0, or 1
+
+            if (IsInverted)
+            {
+                steerDirection *= -1;
+            }
+
+            // Move forward
+            SnakePrefab.transform.position +=
+                direction * MoveSpeed * Time.deltaTime;
+
+            SnakePrefab
+                .transform
+                .Rotate(Vector3.up * steerDirection * SteerSpeed * Time.deltaTime);
+
+            // Store position history
+            PositionsHistory.Insert(0, SnakePrefab.transform.position);
+
+            // Move body parts
+            int index = 0;
+            foreach (var body in BodyParts)
+            {
+                Vector3 point =
+                    PositionsHistory[Mathf
+                        .Clamp(index * Gap, 0, PositionsHistory.Count - 1)];
+
+                // Move body towards the point along the snakes path
+                Vector3 moveDirection = point - body.transform.position;
+                body.transform.position +=
+                    moveDirection * BodySpeed * Time.deltaTime;
+
+                // Rotate body towards the point along the snakes path
+                body.transform.LookAt (point);
+
+                index++;
+            }
         }
 
-        Vector3 direction = SnakePrefab.transform.forward;
-
-        // Steer
-        float steerDirection = Input.GetAxis(playerNumber.ToString()); // Returns value -1, 0, or 1
-
-        if (IsInverted)
+        private void GrowSnake()
         {
-            steerDirection *= -1;
+            GameObject body = Instantiate(BodyPrefab);
+            body.transform.GetChild(0).GetComponent<MeshRenderer>().material =
+                PlayerColor;
+            body.transform.SetParent(this.gameObject.transform);
+            BodyParts.Add (body);
         }
 
-        // Move forward
-        SnakePrefab.transform.position +=
-            direction * MoveSpeed * Time.deltaTime;
-
-        SnakePrefab
-            .transform
-            .Rotate(Vector3.up * steerDirection * SteerSpeed * Time.deltaTime);
-
-        // Store position history
-        PositionsHistory.Insert(0, SnakePrefab.transform.position);
-
-        // Move body parts
-        int index = 0;
-        foreach (var body in BodyParts)
+        public void CutSnake(GameObject segment)
         {
-            Vector3 point =
-                PositionsHistory[Mathf
-                    .Clamp(index * Gap, 0, PositionsHistory.Count - 1)];
+            int segmentIndex = BodyParts.IndexOf(segment);
+            Debug.Log (segmentIndex);
+            for (int i = segmentIndex; i < BodyParts.Count; i++)
+            {
+                GameObject bodyPart = BodyParts[i];
+                bodyPart.transform.SetParent(null);
+                BodyParts.Remove (bodyPart);
+                Destroy(bodyPart, 2);
+            }
 
-            // Move body towards the point along the snakes path
-            Vector3 moveDirection = point - body.transform.position;
-            body.transform.position +=
-                moveDirection * BodySpeed * Time.deltaTime;
-
-            // Rotate body towards the point along the snakes path
-            body.transform.LookAt (point);
-
-            index++;
+            StartCoroutine(BeInvincible());
         }
-    }
 
-    private void GrowSnake()
-    {
-        GameObject body = Instantiate(BodyPrefab);
-        body.transform.GetChild(0).GetComponent<MeshRenderer>().material =
-            PlayerColor;
-        body.transform.SetParent(this.gameObject.transform);
-        BodyParts.Add (body);
-    }
-
-    public void CutSnake(GameObject segment)
-    {
-        int segmentIndex = BodyParts.IndexOf(segment);
-        Debug.Log (segmentIndex);
-        for (int i = segmentIndex; i < BodyParts.Count; i++)
+        private void InvertInput()
         {
-            GameObject bodyPart = BodyParts[i];
-            bodyPart.transform.SetParent(null);
-            BodyParts.Remove (bodyPart);
-            Destroy(bodyPart, 2);
+            if(!IsInverted) StartCoroutine(ChangeInputAnimation());
+            IsInverted = true;
         }
 
-        StartCoroutine(BeInvincible());
-    }
-
-    private void InvertInput()
-    {
-        IsInverted = true;
-    }
-
-    private void RestoreInput()
-    {
-        IsInverted = false;
-    }
-
-    public void CollisionDetection(string collisionTag, GameObject collision)
-    {
-        switch (collisionTag)
+        private void RestoreInput()
         {
-            case "Apple":
-                EatApple(collision.GetComponent<Apple>());
-                break;
-            case "Player":
-            case "Body":
-                EatPlayer(collision
-                    .transform
-                    .root
-                    .GetComponent<SnakeController>(),
-                collision.transform.parent.gameObject);
-                break;
-            case "Wall":
-                ChangeDirection();
-                break;
+            if(IsInverted) StartCoroutine(ChangeInputAnimation());
+            IsInverted = false;
         }
-    }
 
-    private void EatPlayer(SnakeController player, GameObject segment)
-    {
-        if (
-            player &&
-            player.playerNumber != playerNumber &&
-            !player.IsInvincible
-        )
+        public void CollisionDetection(string collisionTag, GameObject collision)
         {
-            player.CutSnake (segment);
+            switch (collisionTag)
+            {
+                case "Apple":
+                    EatApple(collision.GetComponent<Apple>());
+                    break;
+                case "Player":
+                case "Body":
+                    EatPlayer(collision
+                        .transform
+                        .root
+                        .GetComponent<SnakeController>(),
+                    collision.transform.parent.gameObject);
+                    break;
+                case "Wall":
+                    ChangeDirection();
+                    break;
+            }
         }
-    }
 
-    private void EatApple(Apple apple)
-    {
-        if (apple.playerNumber == playerNumber)
+        private void EatPlayer(SnakeController player, GameObject segment)
         {
-            GrowSnake();
-            gameManager.CreateRandomApple();
+            if (
+                player &&
+                player.playerNumber != playerNumber &&
+                !player.IsInvincible
+            )
+            {
+                player.CutSnake (segment);
+            }
         }
-        else
+
+        private void EatApple(Apple apple)
         {
-            gameManager.CreateApple (playerNumber);
+            if (apple.playerNumber == playerNumber)
+            {
+                GrowSnake();
+                gameManager.CreateRandomApple();
+            }
+            else
+            {
+                gameManager.CreateApple (playerNumber);
+            }
+            gameManager.RemoveApple (apple);
+            apple.DestroyApple();
         }
-        gameManager.RemoveApple (apple);
-        apple.DestroyApple();
-    }
 
-    public void TerrainHitted(GameObject curTer)
-    {
-        
-       
-        if (curTer != terrain || curTer != terrainD)
+        public void TerrainHitted(GameObject curTer)
         {
-            InvertInput();
-            StartCoroutine(ChangeInputAnimation());
+            
+            if (terrains.Contains(curTer))
+            {
+                RestoreInput();
+            }
+            else 
+            { 
+                InvertInput();
+            }
         }
-        else if(curTer == terrain || curTer == terrainD)
-        { 
-            RestoreInput();
-            StartCoroutine(ChangeInputAnimation());
+
+        public void ChangeDirection()
+        {
+            SnakePrefab.transform.Rotate(Vector3.up * 180f);
         }
-    
-    }
 
-    public void ChangeDirection()
-    {
-        SnakePrefab.transform.Rotate(Vector3.up * 180f);
-    }
+        public IEnumerator BeInvincible()
+        {
+            IsInvincible = true;
+            yield return new WaitForSeconds(gameManager.SecondsInvincible);
+            IsInvincible = false;
+        }
 
-    public IEnumerator BeInvincible()
-    {
-        IsInvincible = true;
-        yield return new WaitForSeconds(gameManager.SecondsInvincible);
-        IsInvincible = false;
+        IEnumerator ChangeInputAnimation()
+        {
+            rotAnim.SetActive(true);
+            yield return new WaitForSeconds(1);
+            rotAnim.SetActive(false);
+        }
     }
-
-    IEnumerator ChangeInputAnimation()
-    {
-        rotAnim.SetActive(true);
-        yield return new WaitForSeconds(1);
-        rotAnim.SetActive(false);
-    }
-}
