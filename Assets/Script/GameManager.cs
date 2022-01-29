@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     public int Goal = 10;
 
-    private bool GameHasStarted = false;
+    public bool GameHasStarted = false;
 
     private bool GameIsOver = false;
 

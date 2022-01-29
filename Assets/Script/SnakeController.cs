@@ -76,11 +76,19 @@ public class SnakeController : MonoBehaviour
     {
         Length = BodyParts.Count;
         scoreText.text = Length.ToString();
+        HandleEndGameCondition();
+        if (gameManager.GameHasStarted)
+        {
+            Move();
+        }
+    }
+
+    private void HandleEndGameCondition()
+    {
         if (Length >= gameManager.Goal)
         {
             gameManager.EndGame();
         }
-        Move();
     }
 
     private void Move()
@@ -229,15 +237,22 @@ public class SnakeController : MonoBehaviour
         apple.DestroyApple();
     }
 
-    public void OnTerrainChange(GameObject curTer)
+    public void OnTerrainEnter(GameObject terrain)
     {
-        if (terrains.Contains(curTer))
+        if (terrains.IndexOf(terrain) == -1 && !IsInverted)
         {
-            RestoreInput();
-        }
-        else
-        {
+            Debug.Log("Entered Area");
             InvertInput();
+        }
+    }
+
+    public void OnTerrainExit(GameObject terrain)
+    {
+        if (terrains.IndexOf(terrain) != -1 && IsInverted)
+        {
+            Debug.Log("Exit Area");
+
+            RestoreInput();
         }
     }
 
