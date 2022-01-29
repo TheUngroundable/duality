@@ -493,18 +493,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: Gap
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: terrain
       value: 
       objectReference: {fileID: 118623775}
     - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: MoveSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: PlayerColor
       value: 
       objectReference: {fileID: 2100000, guid: c27f4d9e6f06644ac9eca49e55c68109, type: 2}
     - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: PlayerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: playerNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
@@ -1254,12 +1262,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: Gap
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: terrain
       value: 
       objectReference: {fileID: 1748340225}
+    - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
+      propertyPath: MoveSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5478312492343469827, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: PlayerColor
       value: 
