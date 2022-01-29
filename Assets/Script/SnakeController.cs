@@ -150,6 +150,11 @@ public class SnakeController : MonoBehaviour
         if (apple.playerNumber == playerNumber)
         {
             GrowSnake();
+            gameManager.CreateRandomApple();
+        }
+        else
+        {
+            gameManager.CreateApple (playerNumber);
         }
         apple.DestroyApple();
     }
