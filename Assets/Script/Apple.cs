@@ -20,11 +20,11 @@ public class Apple : MonoBehaviour
 
         if (playerNumber == PlayerNumberEnum.Player1)
         {
-            transform.GetComponent<MeshRenderer>().material = matW;
+            transform.GetChild(0).GetComponent<MeshRenderer>().material = matW;
         }
         else
         {
-            transform.GetComponent<MeshRenderer>().material = matB;
+            transform.GetChild(0).GetComponent<MeshRenderer>().material = matB;
         }
         startPosition = transform.position;
     }
