@@ -119,6 +119,7 @@ public class SnakeController : MonoBehaviour
             this.gameObject.transform.GetChild(transform.childCount - 1);
         lastChild.SetParent(null);
         BodyParts.Remove(lastChild.gameObject);
+        Destroy(lastChild.gameObject, 2);
         Length--;
     }
 
