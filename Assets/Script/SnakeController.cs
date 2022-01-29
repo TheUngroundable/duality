@@ -38,6 +38,7 @@ public class SnakeController : MonoBehaviour
     private List<Vector3> PositionsHistory = new List<Vector3>();
 
     public GameObject terrain;
+    public GameObject terrainD;
 
     public GameObject rotAnim;
 
@@ -186,15 +187,19 @@ public class SnakeController : MonoBehaviour
 
     public void TerrainHitted(GameObject curTer)
     {
-        StartCoroutine(ChangeInputAnimation());
-        if (curTer != terrain)
+        
+       
+        if (curTer != terrain || curTer != terrainD)
         {
             InvertInput();
+            StartCoroutine(ChangeInputAnimation());
         }
-        else
-        {
+        else if(curTer == terrain || curTer == terrainD)
+        { 
             RestoreInput();
+            StartCoroutine(ChangeInputAnimation());
         }
+    
     }
 
     public void ChangeDirection()
