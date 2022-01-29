@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class TerrainTrigger : MonoBehaviour
 {
-     public bool white;
-     
-     private void OnTriggerEnter(Collider other)
-     {
-         if(other.gameObject.name=="Snake")
-         {
-           other.gameObject.transform.parent.GetComponent<SnakeController>().TerrainHitted(gameObject);
-         }
-     }
+    public bool white;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Snake Head")
+        {
+            other
+                .gameObject
+                .transform
+                .parent
+                .GetComponent<SnakeController>()
+                .TerrainHitted(gameObject);
+        }
+    }
 }

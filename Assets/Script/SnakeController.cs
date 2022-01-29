@@ -141,6 +141,7 @@ public class SnakeController : MonoBehaviour
 
     private void EatPlayer(SnakeController player)
     {
+        Debug.Log("Mangito player");
         player.ShrinkSnake();
     }
 
