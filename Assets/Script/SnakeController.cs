@@ -6,7 +6,7 @@ public class SnakeController : MonoBehaviour
 {
     public Material PlayerColor;
 
-    public PlayerNumberEnum PlayerNumber;
+    public PlayerNumberEnum playerNumber;
 
     public bool IsInverted = false;
 
@@ -35,6 +35,7 @@ public class SnakeController : MonoBehaviour
     public GameObject terrain;
 
     public GameObject rotAnim;
+
     void Start()
     {
         gameManager = GameObject.FindObjectOfType<GameManager>();
@@ -44,8 +45,6 @@ public class SnakeController : MonoBehaviour
         {
             GrowSnake();
         }
-
-        
     }
 
     public void AddNewSegment()
@@ -59,7 +58,7 @@ public class SnakeController : MonoBehaviour
         Vector3 direction = SnakePrefab.transform.forward;
 
         // Steer
-        float steerDirection = Input.GetAxis(PlayerNumber.ToString()); // Returns value -1, 0, or 1
+        float steerDirection = Input.GetAxis(playerNumber.ToString()); // Returns value -1, 0, or 1
 
         if (IsInverted)
         {
@@ -148,13 +147,16 @@ public class SnakeController : MonoBehaviour
 
     private void EatApple(Apple apple)
     {
-        GrowSnake();
+        if (apple.playerNumber == playerNumber)
+        {
+            GrowSnake();
+        }
         apple.DestroyApple();
     }
 
     public void TerrainHitted(GameObject curTer)
     {
-         StartCoroutine(ChangeInputAnimation());
+        StartCoroutine(ChangeInputAnimation());
         if (curTer != terrain)
         {
             InvertInput();

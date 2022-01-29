@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public Apple applePrefab;
 
+    public PlayerNumberEnum playerNumber;
+
     public int BoardSize = 19;
 
     public int InitialLength = 3;
@@ -14,31 +16,24 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        CreateApple(true);
-        CreateApple(false);
-        CreateApple(true);
-        CreateApple(false);
-        CreateApple(true);
-        CreateApple(false);
-        CreateApple(true);
-        CreateApple(false);
+        CreateApple(PlayerNumberEnum.Player1);
+        CreateApple(PlayerNumberEnum.Player2);
+        CreateApple(PlayerNumberEnum.Player1);
+        CreateApple(PlayerNumberEnum.Player2);
+        CreateApple(PlayerNumberEnum.Player1);
+        CreateApple(PlayerNumberEnum.Player2);
+        CreateApple(PlayerNumberEnum.Player1);
+        CreateApple(PlayerNumberEnum.Player2);
     }
 
-    public void CreateApple(bool white)
+    public void CreateApple(PlayerNumberEnum playerNumber)
     {
         Apple curApple = Instantiate(applePrefab);
         Vector3 rndPos = new Vector3(0, 0.5f, 0);
         rndPos.x = Random.Range(-BoardSize, BoardSize);
         rndPos.z = Random.Range(-BoardSize, BoardSize);
         curApple.gameObject.transform.position = rndPos;
-        if (white)
-        {
-            curApple.playerNumber = PlayerNumberEnum.Player1;
-        }
-        else
-        {
-            curApple.playerNumber = PlayerNumberEnum.Player2;
-        }
+        curApple.playerNumber = playerNumber;
         curApple.transform.SetParent (transform);
         apples.Add (curApple);
     }
