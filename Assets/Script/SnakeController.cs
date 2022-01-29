@@ -18,7 +18,7 @@ public class SnakeController : MonoBehaviour
 
     public int Gap = 10;
 
-    public int InitialLength = 3;
+    private GameManager gameManager;
 
     public int Length;
 
@@ -36,8 +36,10 @@ public class SnakeController : MonoBehaviour
 
     void Start()
     {
-        Length = InitialLength;
-        for (int i = 0; i < InitialLength; i++)
+        gameManager = GameObject.FindObjectOfType<GameManager>();
+
+        Length = gameManager.InitialLength;
+        for (int i = 0; i < gameManager.InitialLength; i++)
         {
             GrowSnake();
         }
@@ -90,7 +92,6 @@ public class SnakeController : MonoBehaviour
 
             index++;
         }
-
     }
 
     private void GrowSnake()
@@ -128,7 +129,7 @@ public class SnakeController : MonoBehaviour
                 EatApple(collision.GetComponent<Apple>());
                 break;
             case "Wall":
-               Debug.Log("muro toccato ");
+                Debug.Log("muro toccato ");
                 ChangeDirection();
                 break;
         }
@@ -155,6 +156,6 @@ public class SnakeController : MonoBehaviour
     public void ChangeDirection()
     {
         Debug.Log("change dire");
-            SnakePrefab.transform.Rotate(Vector3.up * 180f);
+        SnakePrefab.transform.Rotate(Vector3.up * 180f);
     }
 }
