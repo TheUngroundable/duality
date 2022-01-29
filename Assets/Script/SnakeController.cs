@@ -5,10 +5,11 @@ using UnityEngine;
 public class SnakeController : MonoBehaviour
 {
 
-    public enum PlayerNumber {Player1, Player2};
+    public enum PlayerNumberEnum {Player1, Player2};
 
-    public PlayerNumber playerNumber;
+    public PlayerNumberEnum PlayerNumber;
 
+    public bool IsInverted = false;
     public float MoveSpeed = 5;
     public float SteerSpeed = 180;
     public float BodySpeed = 5;
@@ -24,7 +25,6 @@ public class SnakeController : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(playerNumber);
         Length = InitialLength;
         for (int i = 0; i < InitialLength; i++)
         {
@@ -46,7 +46,9 @@ public class SnakeController : MonoBehaviour
             SnakePrefab.transform.forward * MoveSpeed * Time.deltaTime;
 
         // Steer
-        float steerDirection = Input.GetAxis(playerNumber.ToString()); // Returns value -1, 0, or 1
+        float steerDirection = Input.GetAxis(PlayerNumber.ToString()); // Returns value -1, 0, or 1
+        steerDirection = IsInverted ? steerDirection * -1 :  steerDirection * -1; 
+        Debug.Log(steerDirection);
         SnakePrefab
             .transform
             .Rotate(Vector3.up * steerDirection * SteerSpeed * Time.deltaTime);
@@ -81,5 +83,15 @@ public class SnakeController : MonoBehaviour
         GameObject body = Instantiate(BodyPrefab);
         body.transform.SetParent(this.gameObject.transform);
         BodyParts.Add (body);
+    }
+
+    public void ShrinkSnake(){
+        Transform lastChild = this.gameObject.transform.GetChild(transform.childCount - 1);
+        lastChild.SetParent(null);
+        Length--;
+    }
+
+    private void InvertInput(){
+        IsInverted = !IsInverted;
     }
 }
