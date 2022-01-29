@@ -43,6 +43,8 @@ public class SnakeController : MonoBehaviour
         {
             GrowSnake();
         }
+
+        StartCoroutine(ChangeInputAnimation());
     }
 
     public void AddNewSegment()
@@ -163,5 +165,10 @@ public class SnakeController : MonoBehaviour
     public void ChangeDirection()
     {
         SnakePrefab.transform.Rotate(Vector3.up * 180f);
+    }
+
+    IEnumerator ChangeInputAnimation()
+    {
+        
     }
 }
