@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
     {
         AppleClass curApple = Instantiate(applePrefab);
         Vector3 rndPos = new Vector3(0,0.5f,0);
-        rndPos.x = Random.Range(-9,9);
-        rndPos.z = Random.Range(-9,9);
+        rndPos.x = Random.Range(-19,19);
+        rndPos.z = Random.Range(-19,19);
         curApple.gameObject.transform.position = rndPos;
         if(white) curApple.white = white;
         curApple.transform.SetParent(transform);
