@@ -34,6 +34,7 @@ public class SnakeController : MonoBehaviour
 
     public GameObject terrain;
 
+    public GameObject rotAnim;
     void Start()
     {
         gameManager = GameObject.FindObjectOfType<GameManager>();
@@ -44,7 +45,7 @@ public class SnakeController : MonoBehaviour
             GrowSnake();
         }
 
-        StartCoroutine(ChangeInputAnimation());
+        
     }
 
     public void AddNewSegment()
@@ -153,6 +154,7 @@ public class SnakeController : MonoBehaviour
 
     public void TerrainHitted(GameObject curTer)
     {
+         StartCoroutine(ChangeInputAnimation());
         if (curTer != terrain)
         {
             InvertInput();
@@ -170,6 +172,8 @@ public class SnakeController : MonoBehaviour
 
     IEnumerator ChangeInputAnimation()
     {
-        yield return null;
+        rotAnim.SetActive(true);
+        yield return new WaitForSeconds(1);
+        rotAnim.SetActive(false);
     }
 }
