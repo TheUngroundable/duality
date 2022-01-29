@@ -38,7 +38,6 @@ public class SnakeController : MonoBehaviour
         GrowSnake();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Move forward
@@ -48,7 +47,6 @@ public class SnakeController : MonoBehaviour
         // Steer
         float steerDirection = Input.GetAxis(PlayerNumber.ToString()); // Returns value -1, 0, or 1
         steerDirection = IsInverted ? steerDirection * -1 :  steerDirection * -1; 
-        Debug.Log(steerDirection);
         SnakePrefab
             .transform
             .Rotate(Vector3.up * steerDirection * SteerSpeed * Time.deltaTime);
@@ -78,8 +76,6 @@ public class SnakeController : MonoBehaviour
 
     private void GrowSnake()
     {
-        // Instantiate body instance and
-        // add it to the list
         GameObject body = Instantiate(BodyPrefab);
         body.transform.SetParent(this.gameObject.transform);
         BodyParts.Add (body);
@@ -96,7 +92,7 @@ public class SnakeController : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player"){
+        if(collision.gameObject.tag == "Player" || collision.gameObject.transform.parent.gameObject.tag == "Player"){
             collision.gameObject.GetComponent<SnakeController>().ShrinkSnake();
         }
     }
