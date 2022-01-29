@@ -5,7 +5,15 @@ using UnityEngine;
 public class AppleClass : MonoBehaviour
 {
     public int score=1;
-    public bool white=true;
+    public bool white;
+    public Material matW;
+    public Material matB;
+
+    public void Start()
+    {
+        if(white) transform.GetComponent<MeshRenderer> ().material = matW;
+        else  transform.GetComponent<MeshRenderer> ().material = matB;
+    }
 
     public void Update()
     {
