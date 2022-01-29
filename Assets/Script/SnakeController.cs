@@ -242,7 +242,7 @@ public class SnakeController : MonoBehaviour
 
     public void OnTerrainEnter(GameObject terrain)
     {
-        if (terrains.IndexOf(terrain) == -1 && !IsInverted)
+        if (terrains.IndexOf(terrain) != -1)
         {
             Debug.Log("Entered Area");
             InvertInput();
@@ -251,7 +251,7 @@ public class SnakeController : MonoBehaviour
 
     public void OnTerrainExit(GameObject terrain)
     {
-        if (terrains.IndexOf(terrain) != -1 && IsInverted)
+        if (terrains.IndexOf(terrain) == -1)
         {
             Debug.Log("Exit Area");
 
