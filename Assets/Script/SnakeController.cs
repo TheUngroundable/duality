@@ -91,11 +91,6 @@ public class SnakeController : MonoBehaviour
             index++;
         }
 
-        if(Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("ccicio");
-            SnakePrefab.transform.Rotate(Vector3.up * 180f);
-        }
     }
 
     private void GrowSnake()
@@ -132,6 +127,10 @@ public class SnakeController : MonoBehaviour
             case "Apple":
                 EatApple(collision.GetComponent<Apple>());
                 break;
+            case "Wall":
+               Debug.Log("muro toccato ");
+                ChangeDirection();
+                break;
         }
     }
 
@@ -151,5 +150,11 @@ public class SnakeController : MonoBehaviour
         {
             RestoreInput();
         }
+    }
+
+    public void ChangeDirection()
+    {
+        Debug.Log("change dire");
+            SnakePrefab.transform.Rotate(Vector3.up * 180f);
     }
 }
