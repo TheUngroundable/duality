@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     private List<Apple> apples = new List<Apple>();
 
-    public bool inMenu=true;
+    public bool inMenu = true;
 
     void Start()
     {
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        if(inMenu)
+        if (inMenu)
         {
             if (Input.GetKeyDown("space"))
             {
@@ -77,7 +77,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        Camera.main.transform.parent.GetComponent<Animator>().enabled=false;
+        GameHasStarted = true;
+        Camera.main.transform.parent.GetComponent<Animator>().enabled = false;
         StartCoroutine(LerpPosition());
     }
 
@@ -92,7 +93,8 @@ public class GameManager : MonoBehaviour
             t += Time.deltaTime / 1;
             if (t > 1) t = 1;
             {
-                Camera.main.transform.parent.eulerAngles = Vector3.Lerp(start, target, t);
+                Camera.main.transform.parent.eulerAngles =
+                    Vector3.Lerp(start, target, t);
             }
             yield return null;
         }
