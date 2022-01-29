@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         CreateApple(PlayerNumberEnum.Player1);
         CreateApple(PlayerNumberEnum.Player2);
-        goalText.Text = Goal;
+        goalText.text = Goal;
     }
 
     public void CreateApple(PlayerNumberEnum playerNumber)

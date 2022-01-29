@@ -60,7 +60,7 @@ public class SnakeController : MonoBehaviour
     void FixedUpdate()
     {
         Length = BodyParts.Count;
-        scoreText.Text = Length;
+        scoreText.text = Length;
         if (Length >= gameManager.Goal)
         {
             gameManager.EndGame();
