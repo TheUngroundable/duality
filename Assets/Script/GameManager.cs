@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     public bool GameHasStarted = false;
 
-    private bool GameIsOver = false;
+    public bool GameIsOver = false;
 
     public float SecondsInvincible = 0.5f;
 
@@ -72,6 +72,14 @@ public class GameManager : MonoBehaviour
             {
                 StartGame();
             }
+        }
+
+         if (GameIsOver)
+        {
+             if (Input.GetKeyDown("space"))
+             {
+              Application.LoadLevel(Application.loadedLevel);
+              }
         }
     }
 
