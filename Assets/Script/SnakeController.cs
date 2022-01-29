@@ -80,29 +80,41 @@ public class SnakeController : MonoBehaviour
         {
             gameManager.EndGame();
         }
+        Move();
+    }
 
+    private void Move()
+    {
         Vector3 direction = SnakePrefab.transform.forward;
+        float steerDirection = GetSteerDirection();
+        MoveForward (direction, steerDirection);
+        PositionsHistory.Insert(0, SnakePrefab.transform.position);
+        MakeBodyPartsFollowHead();
+    }
 
-        // Steer
+    private float GetSteerDirection()
+    {
         float steerDirection = Input.GetAxis(playerNumber.ToString()); // Returns value -1, 0, or 1
 
         if (IsInverted)
         {
             steerDirection *= -1;
         }
+        return steerDirection;
+    }
 
-        // Move forward
+    private void MoveForward(Vector3 direction, float steerDirection)
+    {
         SnakePrefab.transform.position +=
             direction * MoveSpeed * Time.deltaTime;
 
         SnakePrefab
             .transform
             .Rotate(Vector3.up * steerDirection * SteerSpeed * Time.deltaTime);
+    }
 
-        // Store position history
-        PositionsHistory.Insert(0, SnakePrefab.transform.position);
-
-        // Move body parts
+    private void MakeBodyPartsFollowHead()
+    {
         int index = 0;
         foreach (var body in BodyParts)
         {

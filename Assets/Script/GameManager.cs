@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     public int Goal = 10;
 
+    private bool GameHasStarted = false;
+
     private bool GameIsOver = false;
 
     public int SecondsInvincible = 1;
