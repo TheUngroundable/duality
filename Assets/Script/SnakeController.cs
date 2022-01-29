@@ -51,12 +51,13 @@ public class SnakeController : MonoBehaviour
 
     public void AddNewSegment()
     {
-        Length++;
         GrowSnake();
     }
 
     void FixedUpdate()
     {
+        Length = BodyParts.Count;
+        Debug.Log (Length);
         if (Length >= gameManager.Goal)
         {
             gameManager.EndGame();
