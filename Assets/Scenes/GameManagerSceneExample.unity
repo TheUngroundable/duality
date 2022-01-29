@@ -349,7 +349,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c27f4d9e6f06644ac9eca49e55c68109, type: 2}
     - target: {fileID: 5478312492343469824, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player 2
       objectReference: {fileID: 0}
     - target: {fileID: 5478312492343469826, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: m_RootOrder
@@ -1233,6 +1233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   applePrefab: {fileID: -8274092929531261081, guid: 9cf020cc4cc8b6e40acb826b3801870f, type: 3}
+  playerNumber: 0
   BoardSize: 19
   InitialLength: 3
 --- !u!4 &1609435847
