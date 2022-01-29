@@ -1,5 +1,11 @@
 TODO:
-1) player manager : numero di pezzi(vita?) , bool bianco o nero (cambio comandi),funzione che toglie vita,trigger che colpisce l'altro player
+1) player manager : 
+	numero di pezzi(vita?)			Fatto
+	bool bianco o nero (cambio comandi)
+	funzione che toglie vita
+	trigger che colpisce l'altro player
+
+
 2)mela: obj con tag apple,punteggio,rotazione 360 su se stessa,
 3)GameManager: gestisce tempo, place delle mele, start, end GameManager
 4)UI

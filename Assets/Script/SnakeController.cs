@@ -4,32 +4,27 @@ using UnityEngine;
 
 public class SnakeController : MonoBehaviour
 {
-    // Settings
+
+    public enum PlayerNumber {Player1, Player2};
+
+    public PlayerNumber playerNumber;
+
     public float MoveSpeed = 5;
-
     public float SteerSpeed = 180;
-
     public float BodySpeed = 5;
-
     public int Gap = 10;
-
     public int InitialLength = 3;
-
     public int Length;
-
     // References
     public GameObject SnakePrefab;
-
     public GameObject BodyPrefab;
-
     // Lists
     private List<GameObject> BodyParts = new List<GameObject>();
-
     private List<Vector3> PositionsHistory = new List<Vector3>();
 
-    // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(playerNumber);
         Length = InitialLength;
         for (int i = 0; i < InitialLength; i++)
         {
@@ -51,7 +46,7 @@ public class SnakeController : MonoBehaviour
             SnakePrefab.transform.forward * MoveSpeed * Time.deltaTime;
 
         // Steer
-        float steerDirection = Input.GetAxis("Horizontal"); // Returns value -1, 0, or 1
+        float steerDirection = Input.GetAxis(playerNumber.ToString()); // Returns value -1, 0, or 1
         SnakePrefab
             .transform
             .Rotate(Vector3.up * steerDirection * SteerSpeed * Time.deltaTime);
