@@ -1,7 +1,7 @@
 TODO:
 1) player manager : 
 	numero di pezzi(vita?)			Fatto
-	bool bianco o nero (cambio comandi)
+	bool bianco o nero (cambio comandi)	Fatto
 	funzione che toglie vita			Fatto
 	trigger che colpisce l'altro player	
 
