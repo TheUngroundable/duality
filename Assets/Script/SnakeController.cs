@@ -170,6 +170,6 @@ public class SnakeController : MonoBehaviour
 
     IEnumerator ChangeInputAnimation()
     {
-        
+        yield return null;
     }
 }
