@@ -119,28 +119,12 @@ public class SnakeController : MonoBehaviour
         IsInverted = !IsInverted;
     }
 
-    void OnCollisionEnter(Collision collision)
+    public void CollisionDetection(string hitObj)
     {
-        if (
-            collision.gameObject.tag == "Player" ||
-            collision
-                .gameObject
-                .transform
-                .parent
-                .gameObject
-                .transform
-                .parent
-                .gameObject
-                .tag ==
-            "Player"
-        )
+        switch(hitObj)
         {
-            collision.gameObject.GetComponent<SnakeController>().ShrinkSnake();
-        }
-
-        if (collision.gameObject.tag == "Apple")
-        {
-            Debug.Log("Ciao sono la mela");
+            case "Apple": AddNewSegment();
+             break;
         }
     }
 }
