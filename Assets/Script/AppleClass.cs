@@ -18,7 +18,7 @@ public class AppleClass : MonoBehaviour
 
     public void Update()
     {
-        transform.Rotate(0,0,50*Time.deltaTime); 
+        transform.Rotate(0,50*Time.deltaTime,0); 
         transform.position = new Vector3(startPosition.x, startPosition.y + Mathf.Sin(Time.time * 5)/6, startPosition.z);
 
      }
