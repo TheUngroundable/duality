@@ -90,6 +90,12 @@ public class SnakeController : MonoBehaviour
 
             index++;
         }
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("ccicio");
+            SnakePrefab.transform.Rotate(Vector3.up * 180f);
+        }
     }
 
     private void GrowSnake()
