@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 5478312492343469827}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,10 +234,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a09b07d6f068e74fb406c9729c2a5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerNumber: 0
+  IsInverted: 0
   MoveSpeed: 5
   SteerSpeed: 180
   BodySpeed: 5
   Gap: 50
+  InitialLength: 3
+  Length: 0
   SnakePrefab: {fileID: 8252961181556404003}
   BodyPrefab: {fileID: 7124840909022295909, guid: d318a7dc7eb2c408dab2f81b58cf15cb, type: 3}
 --- !u!1 &7251786367086882438
