@@ -10,8 +10,6 @@ public class Apple : MonoBehaviour
 
     public int score = 1;
 
-    public bool white;
-
     public Material matW;
 
     public Material matB;
@@ -22,7 +20,7 @@ public class Apple : MonoBehaviour
     {
         gameManager = GameObject.FindObjectOfType<GameManager>();
 
-        if (white)
+        if (playerNumber == PlayerNumberEnum.Player1)
         {
             transform.GetComponent<MeshRenderer>().material = matW;
         }
