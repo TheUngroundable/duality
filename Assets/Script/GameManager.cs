@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     public int BoardSize = 19;
 
+    public int InitialLength = 3;
+
     private List<Apple> apples = new List<Apple>();
 
     void Start()

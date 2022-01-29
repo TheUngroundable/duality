@@ -8,8 +8,6 @@ public class Apple : MonoBehaviour
 
     private GameManager gameManager;
 
-    public int score = 1;
-
     public Material matW;
 
     public Material matB;
