@@ -2001,7 +2001,7 @@ MonoBehaviour:
   goalText: {fileID: 300091227}
   playerNumber: 0
   BoardSize: 19
-  InitialLength: 20
+  InitialLength: 3
   Goal: 50
   SecondsInvincible: 1
 --- !u!4 &1609435847
