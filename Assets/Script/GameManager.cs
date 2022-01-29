@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public Apple applePrefab;
 
+    public Text goalText;
+
     public PlayerNumberEnum playerNumber;
 
     public int BoardSize = 19;
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
     {
         CreateApple(PlayerNumberEnum.Player1);
         CreateApple(PlayerNumberEnum.Player2);
+        goalText.Text = Goal;
     }
 
     public void CreateApple(PlayerNumberEnum playerNumber)

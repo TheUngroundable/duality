@@ -6,6 +6,8 @@ public class SnakeController : MonoBehaviour
 {
     public Material PlayerColor;
 
+    public Text scoreText;
+
     private bool IsInvincible = false;
 
     public PlayerNumberEnum playerNumber;
@@ -57,7 +59,7 @@ public class SnakeController : MonoBehaviour
     void FixedUpdate()
     {
         Length = BodyParts.Count;
-        Debug.Log (Length);
+        scoreText.Text = Length;
         if (Length >= gameManager.Goal)
         {
             gameManager.EndGame();
