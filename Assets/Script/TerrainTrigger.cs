@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TerrainTrigger : MonoBehaviour
 {
-    public bool white;
+    
 
     private void OnTriggerEnter(Collider other)
     {
