@@ -3,3 +3,7 @@ TODO:
 2)mela: obj con tag apple,punteggio,rotazione 360 su se stessa,
 3)GameManager: gestisce tempo, place delle mele, start, end GameManager
 4)UI
+
+
+AppleManager
+inizi instanziando due mele una bianca una nera, 
