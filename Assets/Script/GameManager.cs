@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
             if (t > 1) t = 1;
             {
                 Camera.main.transform.parent.eulerAngles = Vector3.Lerp(start, target, t);
+                Camera.main.fieldOfView = Mathf.Lerp(100, 60, t);
             }
             yield return null;
         }
