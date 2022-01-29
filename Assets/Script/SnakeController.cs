@@ -145,7 +145,10 @@ public class SnakeController : MonoBehaviour
     private void GrowSnake()
     {
         PlaySound (growSound);
-        GameObject body = Instantiate(BodyPrefab);
+        GameObject body =
+            Instantiate(BodyPrefab,
+            gameObject.transform.position,
+            gameObject.transform.rotation);
         body.transform.GetChild(0).GetComponent<MeshRenderer>().material =
             PlayerColor;
         body.transform.SetParent(this.gameObject.transform);
