@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public AppleClass applePrefab;
 
+    public int BoardSize = 19;
+
     private List<AppleClass> apples = new List<AppleClass>();
 
     void Start()
@@ -24,8 +26,8 @@ public class GameManager : MonoBehaviour
     {
         AppleClass curApple = Instantiate(applePrefab);
         Vector3 rndPos = new Vector3(0, 0.5f, 0);
-        rndPos.x = Random.Range(-9, 9);
-        rndPos.z = Random.Range(-9, 9);
+        rndPos.x = Random.Range(-BoardSize, BoardSize);
+        rndPos.z = Random.Range(-BoardSize, BoardSize);
         curApple.gameObject.transform.position = rndPos;
         if (white)
         {
