@@ -355,6 +355,7 @@ MonoBehaviour:
   neutralize: {fileID: 8300000, guid: a1498c908e13848dab46f25a10967875, type: 3}
   hitWall: {fileID: 8300000, guid: e4db060c7e68e40068ee6be6e8eb940f, type: 3}
   hurt: {fileID: 8300000, guid: 75fa24d88a80d4b848de6b4ebce23498, type: 3}
+  invert: {fileID: 8300000, guid: 6256d2dd4980f4579a3fcd0c0bad91e2, type: 3}
 --- !u!82 &3944919614714655770
 AudioSource:
   m_ObjectHideFlags: 0

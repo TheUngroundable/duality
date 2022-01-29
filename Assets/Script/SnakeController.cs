@@ -53,6 +53,8 @@ public class SnakeController : MonoBehaviour
 
     public AudioClip hurt;
 
+    public AudioClip invert;
+
     void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -153,12 +155,14 @@ public class SnakeController : MonoBehaviour
 
     private void InvertInput()
     {
+        PlaySound (invert);
         if (!IsInverted) StartCoroutine(ChangeInputAnimation());
         IsInverted = true;
     }
 
     private void RestoreInput()
     {
+        PlaySound (invert);
         if (IsInverted) StartCoroutine(ChangeInputAnimation());
         IsInverted = false;
     }
