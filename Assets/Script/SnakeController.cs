@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class SnakeController : MonoBehaviour
 {
-    public enum PlayerNumberEnum
-    {
-        Player1,
-        Player2
-    }
-
     public Material PlayerColor;
 
     public PlayerNumberEnum PlayerNumber;
@@ -65,7 +59,6 @@ public class SnakeController : MonoBehaviour
         if (IsInverted)
         {
             steerDirection *= -1;
-            
         }
 
         // Move forward
@@ -121,23 +114,24 @@ public class SnakeController : MonoBehaviour
         IsInverted = true;
     }
 
-     private void RestoreInput()
+    private void RestoreInput()
     {
         IsInverted = false;
     }
 
-    public void CollisionDetection(string hitObj,GameObject col)
+    public void CollisionDetection(string hitObj, GameObject col)
     {
-        switch(hitObj)
+        switch (hitObj)
         {
-            case "Apple": AddNewSegment();
-             break;
+            case "Apple":
+                AddNewSegment();
+                break;
         }
     }
-    
+
     public void TerrainHitted(GameObject curTer)
     {
-        if(curTer!=terrain)
+        if (curTer != terrain)
         {
             InvertInput();
         }
@@ -146,6 +140,4 @@ public class SnakeController : MonoBehaviour
             RestoreInput();
         }
     }
-
-    
 }
