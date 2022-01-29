@@ -6,7 +6,7 @@ public class SnakeController : MonoBehaviour
 {
 
     public enum PlayerNumberEnum {Player1, Player2};
-
+    public Material PlayerColor;
     public PlayerNumberEnum PlayerNumber;
 
     public bool IsInverted = false;
@@ -80,6 +80,7 @@ public class SnakeController : MonoBehaviour
     private void GrowSnake()
     {
         GameObject body = Instantiate(BodyPrefab);
+        body.transform.GetChild(0).GetComponent<MeshRenderer>().material = PlayerColor;
         body.transform.SetParent(this.gameObject.transform);
         BodyParts.Add (body);
     }
@@ -95,7 +96,7 @@ public class SnakeController : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player" || collision.gameObject.transform.parent.gameObject.tag == "Player"){
+        if(collision.gameObject.tag == "Player" || collision.gameObject.transform.parent.gameObject.transform.parent.gameObject.tag == "Player"){
             collision.gameObject.GetComponent<SnakeController>().ShrinkSnake();
         }
     }
