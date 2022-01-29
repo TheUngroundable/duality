@@ -6,6 +6,8 @@ public class SnakeController : MonoBehaviour
 {
     public Material PlayerColor;
 
+    private bool IsInvincible = false;
+
     public PlayerNumberEnum playerNumber;
 
     public bool IsInverted = false;
@@ -55,6 +57,11 @@ public class SnakeController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Length >= gameManager.Goal)
+        {
+            gameManager.EndGame();
+        }
+
         Vector3 direction = SnakePrefab.transform.forward;
 
         // Steer
@@ -107,9 +114,11 @@ public class SnakeController : MonoBehaviour
 
     public void ShrinkSnake()
     {
+        StartCoroutine(BeInvincible());
         Transform lastChild =
             this.gameObject.transform.GetChild(transform.childCount - 1);
         lastChild.SetParent(null);
+        BodyParts.Remove(lastChild.gameObject);
         Length--;
     }
 
@@ -131,7 +140,11 @@ public class SnakeController : MonoBehaviour
                 EatApple(collision.GetComponent<Apple>());
                 break;
             case "Player":
-                EatPlayer(collision.GetComponent<SnakeController>());
+            case "Body":
+                EatPlayer(collision
+                    .transform
+                    .root
+                    .GetComponent<SnakeController>());
                 break;
             case "Wall":
                 ChangeDirection();
@@ -141,8 +154,14 @@ public class SnakeController : MonoBehaviour
 
     private void EatPlayer(SnakeController player)
     {
-        Debug.Log("Mangito player");
-        player.ShrinkSnake();
+        if (
+            player &&
+            player.playerNumber != playerNumber &&
+            !player.IsInvincible
+        )
+        {
+            player.ShrinkSnake();
+        }
     }
 
     private void EatApple(Apple apple)
@@ -156,6 +175,7 @@ public class SnakeController : MonoBehaviour
         {
             gameManager.CreateApple (playerNumber);
         }
+        gameManager.RemoveApple (apple);
         apple.DestroyApple();
     }
 
@@ -175,6 +195,13 @@ public class SnakeController : MonoBehaviour
     public void ChangeDirection()
     {
         SnakePrefab.transform.Rotate(Vector3.up * 180f);
+    }
+
+    public IEnumerator BeInvincible()
+    {
+        IsInvincible = true;
+        yield return new WaitForSeconds(2);
+        IsInvincible = false;
     }
 
     IEnumerator ChangeInputAnimation()

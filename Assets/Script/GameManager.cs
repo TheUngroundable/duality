@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
 
     public int InitialLength = 3;
 
+    public int Goal = 10;
+
+    public bool GameIsOver = false;
+
     private List<Apple> apples = new List<Apple>();
 
     void Start()
@@ -37,5 +41,16 @@ public class GameManager : MonoBehaviour
         PlayerNumberEnum randomPlayerNumber =
             (PlayerNumberEnum) Random.Range(0, 2);
         CreateApple (randomPlayerNumber);
+    }
+
+    public void EndGame()
+    {
+        GameIsOver = true;
+        Time.timeScale = 0;
+    }
+
+    public void RemoveApple(Apple apple)
+    {
+        apples.Remove (apple);
     }
 }
