@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TerrainTrigger : MonoBehaviour
 {
-    
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Snake")
@@ -15,7 +13,7 @@ public class TerrainTrigger : MonoBehaviour
                 .transform
                 .parent
                 .GetComponent<SnakeController>()
-                .TerrainHitted(gameObject);
+                .OnTerrainChange(gameObject);
         }
     }
 }
