@@ -96,7 +96,7 @@ public class SnakeController : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player" || collision.gameObject.transform.parent.gameObject.tag == "Player"){
+        if(collision.gameObject.tag == "Player" || collision.gameObject.transform.parent.gameObject.transform.parent.gameObject.tag == "Player"){
             collision.gameObject.GetComponent<SnakeController>().ShrinkSnake();
         }
     }
