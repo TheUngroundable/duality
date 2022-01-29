@@ -4,23 +4,38 @@ using UnityEngine;
 
 public class SnakeController : MonoBehaviour
 {
+    public enum PlayerNumberEnum
+    {
+        Player1,
+        Player2
+    }
 
-    public enum PlayerNumberEnum {Player1, Player2};
     public Material PlayerColor;
+
     public PlayerNumberEnum PlayerNumber;
 
     public bool IsInverted = false;
+
     public float MoveSpeed = 5;
+
     public float SteerSpeed = 180;
+
     public float BodySpeed = 5;
+
     public int Gap = 10;
+
     public int InitialLength = 3;
+
     public int Length;
+
     // References
     public GameObject SnakePrefab;
+
     public GameObject BodyPrefab;
+
     // Lists
     private List<GameObject> BodyParts = new List<GameObject>();
+
     private List<Vector3> PositionsHistory = new List<Vector3>();
 
     void Start()
@@ -40,16 +55,21 @@ public class SnakeController : MonoBehaviour
 
     void Update()
     {
-        // Move forward
-        SnakePrefab.transform.position +=
-            SnakePrefab.transform.forward * MoveSpeed * Time.deltaTime;
+        Vector3 direction = SnakePrefab.transform.forward;
 
         // Steer
         float steerDirection = Input.GetAxis(PlayerNumber.ToString()); // Returns value -1, 0, or 1
 
-        if(IsInverted){
+        if (IsInverted)
+        {
             steerDirection *= -1;
+            direction = SnakePrefab.transform.forward * -1;
         }
+
+        // Move forward
+        SnakePrefab.transform.position +=
+            direction * MoveSpeed * Time.deltaTime;
+
         SnakePrefab
             .transform
             .Rotate(Vector3.up * steerDirection * SteerSpeed * Time.deltaTime);
@@ -80,32 +100,47 @@ public class SnakeController : MonoBehaviour
     private void GrowSnake()
     {
         GameObject body = Instantiate(BodyPrefab);
-        body.transform.GetChild(0).GetComponent<MeshRenderer>().material = PlayerColor;
+        body.transform.GetChild(0).GetComponent<MeshRenderer>().material =
+            PlayerColor;
         body.transform.SetParent(this.gameObject.transform);
         BodyParts.Add (body);
     }
 
-    public void ShrinkSnake(){
-        Transform lastChild = this.gameObject.transform.GetChild(transform.childCount - 1);
+    public void ShrinkSnake()
+    {
+        Transform lastChild =
+            this.gameObject.transform.GetChild(transform.childCount - 1);
         lastChild.SetParent(null);
         Length--;
     }
 
-    private void InvertInput(){
+    private void InvertInput()
+    {
         IsInverted = !IsInverted;
     }
+
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player" || collision.gameObject.transform.parent.gameObject.transform.parent.gameObject.tag == "Player"){
+        if (
+            collision.gameObject.tag == "Player" ||
+            collision
+                .gameObject
+                .transform
+                .parent
+                .gameObject
+                .transform
+                .parent
+                .gameObject
+                .tag ==
+            "Player"
+        )
+        {
             collision.gameObject.GetComponent<SnakeController>().ShrinkSnake();
         }
 
-        if (collision.gameObject.tag == "Apple") 
-       {
-           Debug.Log("Ciao sono la mela");
-       }
+        if (collision.gameObject.tag == "Apple")
+        {
+            Debug.Log("Ciao sono la mela");
+        }
     }
-
- 
-
 }
