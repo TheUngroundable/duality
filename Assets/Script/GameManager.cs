@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     private List<Apple> apples = new List<Apple>();
 
+    public bool inMenu=true;
+
     void Start()
     {
         CreateApple(PlayerNumberEnum.Player1);
@@ -60,5 +62,39 @@ public class GameManager : MonoBehaviour
     public void RemoveApple(Apple apple)
     {
         apples.Remove (apple);
+    }
+
+    public void Update()
+    {
+        if(inMenu)
+        {
+            if (Input.GetKeyDown("space"))
+            {
+                StartGame();
+            }
+        }
+    }
+
+    public void StartGame()
+    {
+        Camera.main.transform.parent.GetComponent<Animator>().enabled=false;
+        StartCoroutine(LerpPosition());
+    }
+
+    IEnumerator LerpPosition()
+    {
+        var t = 0f;
+        var start = Camera.main.transform.parent.eulerAngles;
+        var target = Vector3.zero;
+
+        while (t < 1)
+        {
+            t += Time.deltaTime / 1;
+            if (t > 1) t = 1;
+            {
+                Camera.main.transform.parent.eulerAngles = Vector3.Lerp(start, target, t);
+            }
+            yield return null;
+        }
     }
 }
