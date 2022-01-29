@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
 
     public int Goal = 10;
 
-    public bool GameIsOver = false;
+    private bool GameIsOver = false;
+
+    public int SecondsInvincible = 1;
 
     private List<Apple> apples = new List<Apple>();
 

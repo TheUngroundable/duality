@@ -337,12 +337,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerColor: {fileID: 0}
-  PlayerNumber: 0
+  scoreText: {fileID: 0}
+  playerNumber: 0
   IsInverted: 0
-  MoveSpeed: 5
-  SteerSpeed: 180
-  BodySpeed: 5
-  Gap: 50
+  MoveSpeed: 20
+  SteerSpeed: 300
+  BodySpeed: 20
+  Gap: 10
   Length: 0
   SnakePrefab: {fileID: 8252961181556404003}
   BodyPrefab: {fileID: 7124840909022295909, guid: d318a7dc7eb2c408dab2f81b58cf15cb, type: 3}

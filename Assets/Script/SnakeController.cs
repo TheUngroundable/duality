@@ -205,7 +205,7 @@ public class SnakeController : MonoBehaviour
     public IEnumerator BeInvincible()
     {
         IsInvincible = true;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(gameManager.SecondsInvincible);
         IsInvincible = false;
     }
 
