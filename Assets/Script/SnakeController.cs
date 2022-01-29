@@ -244,8 +244,8 @@ public class SnakeController : MonoBehaviour
     {
         if (terrains.IndexOf(terrain) != -1 && gameManager.GameHasStarted)
         {
-            Debug.Log("Entered Area");
-            InvertInput();
+            Debug.Log("Enter Area");
+            RestoreInput();
         }
     }
 
@@ -255,7 +255,7 @@ public class SnakeController : MonoBehaviour
         {
             Debug.Log("Exit Area");
 
-            RestoreInput();
+            InvertInput();
         }
     }
 
