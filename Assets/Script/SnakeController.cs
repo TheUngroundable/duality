@@ -77,7 +77,10 @@ public class SnakeController : MonoBehaviour
         Length = BodyParts.Count;
         scoreText.text = Length.ToString();
         HandleEndGameCondition();
-        Move();
+        if (gameManager.GameHasStarted)
+        {
+            Move();
+        }
     }
 
     private void HandleEndGameCondition()
