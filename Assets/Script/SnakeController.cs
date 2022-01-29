@@ -94,4 +94,10 @@ public class SnakeController : MonoBehaviour
     private void InvertInput(){
         IsInverted = !IsInverted;
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player"){
+            collision.gameObject.GetComponent<SnakeController>().ShrinkSnake();
+        }
+    }
 }

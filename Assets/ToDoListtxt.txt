@@ -2,8 +2,8 @@ TODO:
 1) player manager : 
 	numero di pezzi(vita?)			Fatto
 	bool bianco o nero (cambio comandi)
-	funzione che toglie vita
-	trigger che colpisce l'altro player
+	funzione che toglie vita			Fatto
+	trigger che colpisce l'altro player	
 
 
 2)mela: obj con tag apple,punteggio,rotazione 360 su se stessa,
