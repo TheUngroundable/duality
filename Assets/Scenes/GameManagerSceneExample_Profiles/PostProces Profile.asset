@@ -109,7 +109,7 @@ MonoBehaviour:
   - {fileID: -8296925759694958738}
   - {fileID: 1646063045387229039}
   - {fileID: -94797420674865946}
-  - {fileID: 5563910490731432492}
+  - {fileID: 8718719500308408984}
   - {fileID: 5400880569083741165}
 --- !u!114 &1646063045387229039
 MonoBehaviour:
@@ -1456,7 +1456,7 @@ MonoBehaviour:
   scale:
     overrideState: 1
     value: 1
---- !u!114 &5563910490731432492
+--- !u!114 &8718719500308408984
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1473,20 +1473,20 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   intensity:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 4
   threshold:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0.7
   softKnee:
-    overrideState: 0
-    value: 0.5
+    overrideState: 1
+    value: 0.107
   clamp:
-    overrideState: 0
-    value: 65472
+    overrideState: 1
+    value: 123
   diffusion:
-    overrideState: 0
-    value: 7
+    overrideState: 1
+    value: 5.64
   anamorphicRatio:
     overrideState: 0
     value: 0
