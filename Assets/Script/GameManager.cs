@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     private bool GameIsOver = false;
 
-    public int SecondsInvincible = 1;
+    public float SecondsInvincible = 0.5f;
 
     private List<Apple> apples = new List<Apple>();
 
