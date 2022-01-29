@@ -92,13 +92,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1173589135406057316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77af3084692fdd947a02cf5b823d79c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 946928a8da0e249788012ec6b0fc2225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 0
   score: 1
   white: 0
-  matW: {fileID: 2100000, guid: 974cb5050257b7449b5cf95f195c7597, type: 2}
-  matB: {fileID: 2100000, guid: 20f5dc8fa5a825848b4d0c27b066c73e, type: 2}
+  matW: {fileID: 2100000, guid: 20f5dc8fa5a825848b4d0c27b066c73e, type: 2}
+  matB: {fileID: 2100000, guid: 974cb5050257b7449b5cf95f195c7597, type: 2}
 --- !u!65 &1825780505932778443
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,11 +1,11 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SnakeCollision : MonoBehaviour
-{ 
+{
     SnakeController snakeController;
+
     public void Start()
     {
         snakeController = transform.parent.GetComponent<SnakeController>();
@@ -13,12 +13,12 @@ public class SnakeCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        snakeController.CollisionDetection(collision.gameObject.tag,collision.gameObject);
-        if(collision.gameObject.tag=="Apple")
+        snakeController
+            .CollisionDetection(collision.gameObject.tag, collision.gameObject);
+        if (collision.gameObject.tag == "Apple")
         {
-           collision.gameObject.GetComponent<Collider>().enabled=false;
-           Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Collider>().enabled = false;
+            Destroy(collision.gameObject);
         }
-       
     }
 }

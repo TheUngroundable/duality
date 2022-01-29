@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AppleClass : MonoBehaviour
+public class Apple : MonoBehaviour
 {
     public PlayerNumberEnum playerNumber;
 

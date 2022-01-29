@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public AppleClass applePrefab;
+    public Apple applePrefab;
 
     public int BoardSize = 19;
 
-    private List<AppleClass> apples = new List<AppleClass>();
+    private List<Apple> apples = new List<Apple>();
 
     void Start()
     {
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     public void CreateApple(bool white)
     {
-        AppleClass curApple = Instantiate(applePrefab);
+        Apple curApple = Instantiate(applePrefab);
         Vector3 rndPos = new Vector3(0, 0.5f, 0);
         rndPos.x = Random.Range(-BoardSize, BoardSize);
         rndPos.z = Random.Range(-BoardSize, BoardSize);
