@@ -99,5 +99,13 @@ public class SnakeController : MonoBehaviour
         if(collision.gameObject.tag == "Player" || collision.gameObject.transform.parent.gameObject.transform.parent.gameObject.tag == "Player"){
             collision.gameObject.GetComponent<SnakeController>().ShrinkSnake();
         }
+
+        if (collision.gameObject.tag == "Apple") 
+       {
+           Debug.Log("Ciao sono la mela");
+       }
     }
+
+ 
+
 }
