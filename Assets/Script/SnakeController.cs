@@ -116,15 +116,19 @@ public class SnakeController : MonoBehaviour
         BodyParts.Add (body);
     }
 
-    public void ShrinkSnake()
+    public void CutSnake(GameObject segment)
     {
+        int segmentIndex = BodyParts.IndexOf(segment);
+        Debug.Log (segmentIndex);
+        for (int i = segmentIndex; i < BodyParts.Count; i++)
+        {
+            GameObject bodyPart = BodyParts[i];
+            bodyPart.transform.SetParent(null);
+            BodyParts.Remove (bodyPart);
+            Destroy(bodyPart, 2);
+        }
+
         StartCoroutine(BeInvincible());
-        Transform lastChild =
-            this.gameObject.transform.GetChild(transform.childCount - 1);
-        lastChild.SetParent(null);
-        BodyParts.Remove(lastChild.gameObject);
-        Destroy(lastChild.gameObject, 2);
-        Length--;
     }
 
     private void InvertInput()
@@ -149,7 +153,8 @@ public class SnakeController : MonoBehaviour
                 EatPlayer(collision
                     .transform
                     .root
-                    .GetComponent<SnakeController>());
+                    .GetComponent<SnakeController>(),
+                collision.transform.parent.gameObject);
                 break;
             case "Wall":
                 ChangeDirection();
@@ -157,7 +162,7 @@ public class SnakeController : MonoBehaviour
         }
     }
 
-    private void EatPlayer(SnakeController player)
+    private void EatPlayer(SnakeController player, GameObject segment)
     {
         if (
             player &&
@@ -165,7 +170,7 @@ public class SnakeController : MonoBehaviour
             !player.IsInvincible
         )
         {
-            player.ShrinkSnake();
+            player.CutSnake (segment);
         }
     }
 
