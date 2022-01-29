@@ -46,7 +46,6 @@ public class SnakeController : MonoBehaviour
 
         // Steer
         float steerDirection = Input.GetAxis(PlayerNumber.ToString()); // Returns value -1, 0, or 1
-        steerDirection = IsInverted ? steerDirection * -1 :  steerDirection * -1; 
         SnakePrefab
             .transform
             .Rotate(Vector3.up * steerDirection * SteerSpeed * Time.deltaTime);
