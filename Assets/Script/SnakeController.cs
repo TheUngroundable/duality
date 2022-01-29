@@ -38,6 +38,8 @@ public class SnakeController : MonoBehaviour
 
     private List<Vector3> PositionsHistory = new List<Vector3>();
 
+    public GameObject terrain;
+
     void Start()
     {
         Length = InitialLength;
@@ -53,7 +55,7 @@ public class SnakeController : MonoBehaviour
         GrowSnake();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector3 direction = SnakePrefab.transform.forward;
 
@@ -63,7 +65,7 @@ public class SnakeController : MonoBehaviour
         if (IsInverted)
         {
             steerDirection *= -1;
-            direction = SnakePrefab.transform.forward * -1;
+            
         }
 
         // Move forward
@@ -116,10 +118,15 @@ public class SnakeController : MonoBehaviour
 
     private void InvertInput()
     {
-        IsInverted = !IsInverted;
+        IsInverted = true;
     }
 
-    public void CollisionDetection(string hitObj)
+     private void RestoreInput()
+    {
+        IsInverted = false;
+    }
+
+    public void CollisionDetection(string hitObj,GameObject col)
     {
         switch(hitObj)
         {
@@ -127,4 +134,18 @@ public class SnakeController : MonoBehaviour
              break;
         }
     }
+    
+    public void TerrainHitted(GameObject curTer)
+    {
+        if(curTer!=terrain)
+        {
+            InvertInput();
+        }
+        else
+        {
+            RestoreInput();
+        }
+    }
+
+    
 }

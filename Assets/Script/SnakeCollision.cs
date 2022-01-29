@@ -13,11 +13,12 @@ public class SnakeCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        snakeController.CollisionDetection(collision.gameObject.tag);
+        snakeController.CollisionDetection(collision.gameObject.tag,collision.gameObject);
         if(collision.gameObject.tag=="Apple")
         {
            collision.gameObject.GetComponent<Collider>().enabled=false;
            Destroy(collision.gameObject);
         }
+       
     }
 }
