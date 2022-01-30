@@ -70,18 +70,18 @@ public class GameManager : MonoBehaviour
     {
         if (inMenu)
         {
-            if (Input.GetKeyDown("space"))
+            if (Input.GetKeyDown("space") && !GameHasStarted)
             {
                 StartGame();
             }
         }
 
-         if (GameIsOver)
+        if (GameIsOver)
         {
-             if (Input.GetKeyDown("space"))
-             {
-              Application.LoadLevel(Application.loadedLevel);
-              }
+            if (Input.GetKeyDown("space") && !GameIsOver)
+            {
+                Application.LoadLevel(Application.loadedLevel);
+            }
         }
     }
 
