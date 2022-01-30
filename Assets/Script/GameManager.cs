@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
         CreateApple(PlayerNumberEnum.Player1);
         CreateApple(PlayerNumberEnum.Player2);
         goalText.text = Goal.ToString();
+
+        Time.timeScale = 1;
     }
 
     public void CreateApple(PlayerNumberEnum playerNumber)
