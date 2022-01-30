@@ -10,6 +10,8 @@ TagManager:
   - Wall
   - Snake Head
   - Body
+  - Black Terrain
+  - White Terrain
   layers:
   - Default
   - TransparentFX

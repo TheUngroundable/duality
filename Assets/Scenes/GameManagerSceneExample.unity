@@ -943,7 +943,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d8425e2bcae6f4ec1a0d3d6c4442ec0d, type: 2}
     - target: {fileID: 8440469289913994396, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
@@ -1898,7 +1898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8440469289913994396, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72f398752e02e294bad1c911e237fccf, type: 3}
@@ -2498,7 +2498,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 988122065, guid: cd3afaaedb8fd2b4caf215040dc0df70, type: 3}
       propertyPath: m_Name
-      value: TerrainBlack
+      value: Black Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 988122065, guid: cd3afaaedb8fd2b4caf215040dc0df70, type: 3}
+      propertyPath: m_TagString
+      value: Black Terrain
       objectReference: {fileID: 0}
     - target: {fileID: 988122066, guid: cd3afaaedb8fd2b4caf215040dc0df70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2558,7 +2562,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1480597116, guid: cd3afaaedb8fd2b4caf215040dc0df70, type: 3}
       propertyPath: m_Name
-      value: TerrainWhite
+      value: White Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480597116, guid: cd3afaaedb8fd2b4caf215040dc0df70, type: 3}
+      propertyPath: m_TagString
+      value: White Terrain
       objectReference: {fileID: 0}
     - target: {fileID: 1480597117, guid: cd3afaaedb8fd2b4caf215040dc0df70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2654,7 +2662,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6809658311699209715, guid: cd3afaaedb8fd2b4caf215040dc0df70, type: 3}
       propertyPath: m_Name
-      value: TerrainBlack
+      value: Black Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809658311699209715, guid: cd3afaaedb8fd2b4caf215040dc0df70, type: 3}
+      propertyPath: m_TagString
+      value: Black Terrain
       objectReference: {fileID: 0}
     - target: {fileID: 6809658311699209719, guid: cd3afaaedb8fd2b4caf215040dc0df70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2690,7 +2702,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6809658312269395076, guid: cd3afaaedb8fd2b4caf215040dc0df70, type: 3}
       propertyPath: m_Name
-      value: TerrainWhite
+      value: White Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809658312269395076, guid: cd3afaaedb8fd2b4caf215040dc0df70, type: 3}
+      propertyPath: m_TagString
+      value: White Terrain
       objectReference: {fileID: 0}
     - target: {fileID: 6809658312269395079, guid: cd3afaaedb8fd2b4caf215040dc0df70, type: 3}
       propertyPath: m_Size.x

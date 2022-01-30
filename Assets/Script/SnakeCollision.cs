@@ -17,13 +17,18 @@ public class SnakeCollision : MonoBehaviour
             .CollisionDetection(collision.gameObject.tag, collision.gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collider)
     {
-        snakeController.OnTerrainEnter(other.gameObject);
+        snakeController.OnTerrainEnter(collider.gameObject);
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider collider)
     {
-        snakeController.OnTerrainExit(other.gameObject);
+        snakeController.OnTerrainExit(collider.gameObject);
+    }
+
+    private void OnTriggerStay(Collider collider)
+    {
+        snakeController.OnTerrainStay(collider.gameObject);
     }
 }

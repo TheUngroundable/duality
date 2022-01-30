@@ -276,6 +276,18 @@ public class SnakeController : MonoBehaviour
         }
     }
 
+    public void OnTerrainStay(GameObject terrain)
+    {
+        string playerTerrain =
+            playerNumber == PlayerNumberEnum.Player1
+                ? "White Terrain"
+                : "Black Terrain";
+        if (terrain.tag == playerTerrain)
+        {
+            IsInverted = false;
+        }
+    }
+
     public void ChangeDirection()
     {
         SnakePrefab.transform.Rotate(Vector3.up * 180f);
