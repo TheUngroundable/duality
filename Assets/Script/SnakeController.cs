@@ -179,15 +179,21 @@ public class SnakeController : MonoBehaviour
     private void InvertInput()
     {
         PlaySound (invert);
-        if (!IsInverted) StartCoroutine(ChangeInputAnimation());
-        IsInverted = true;
+        if (!IsInverted)
+        {
+            IsInverted = true;
+            StartCoroutine(ChangeInputAnimation());
+        }
     }
 
     private void RestoreInput()
     {
         PlaySound (invert);
-        if (IsInverted) StartCoroutine(ChangeInputAnimation());
-        IsInverted = false;
+        if (IsInverted)
+        {
+            IsInverted = false;
+            StartCoroutine(ChangeInputAnimation());
+        }
     }
 
     public void CollisionDetection(string collisionTag, GameObject collision)
@@ -242,16 +248,27 @@ public class SnakeController : MonoBehaviour
 
     public void OnTerrainEnter(GameObject terrain)
     {
-        if (terrains.IndexOf(terrain) != -1 && gameManager.GameHasStarted)
+        string playerTerrain =
+            playerNumber == PlayerNumberEnum.Player1
+                ? "White Terrain"
+                : "Black Terrain";
+        if (terrain.tag == playerTerrain && IsInverted)
+        //gameManager.GameHasStarted
         {
             Debug.Log("Enter Area");
+            Debug.Log (terrain);
             RestoreInput();
         }
     }
 
     public void OnTerrainExit(GameObject terrain)
     {
-        if (terrains.IndexOf(terrain) == -1 && gameManager.GameHasStarted)
+        string playerTerrain =
+            playerNumber == PlayerNumberEnum.Player1
+                ? "White Terrain"
+                : "Black Terrain";
+        if (terrain.tag == playerTerrain && !IsInverted)
+        //gameManager.GameHasStarted
         {
             Debug.Log("Exit Area");
 
