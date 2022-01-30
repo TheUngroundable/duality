@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
 
         if (GameIsOver)
         {
-            if (Input.GetKeyDown("space") && !GameIsOver)
+            if (Input.GetKeyDown("space"))
             {
                 Application.LoadLevel(Application.loadedLevel);
             }
