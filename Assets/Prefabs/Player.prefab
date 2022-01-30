@@ -341,7 +341,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   playerNumber: 0
   IsInverted: 0
-  MoveSpeed: 20
+  MoveSpeed: 50
   SteerSpeed: 300
   BodySpeed: 20
   Gap: 10
