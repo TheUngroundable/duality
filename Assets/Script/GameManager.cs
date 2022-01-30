@@ -91,8 +91,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         GameHasStarted = true;
+        inMenu = false;
         startText.enabled = false;
-
         Camera.main.transform.parent.GetComponent<Animator>().enabled = false;
         StartCoroutine(LerpPosition());
     }
