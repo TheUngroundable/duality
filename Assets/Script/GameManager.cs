@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     private List<Apple> apples = new List<Apple>();
 
+    public Text startText;
+
     public bool inMenu = true;
 
     void Start()
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
     {
         GameIsOver = true;
         Time.timeScale = 0;
+        startText.enabled = true;
     }
 
     public void RemoveApple(Apple apple)
@@ -70,18 +73,18 @@ public class GameManager : MonoBehaviour
     {
         if (inMenu)
         {
-            if (Input.GetKeyDown("space"))
+            if (Input.GetKeyDown("space") && !GameHasStarted)
             {
                 StartGame();
             }
         }
 
-         if (GameIsOver)
+        if (GameIsOver)
         {
-             if (Input.GetKeyDown("space"))
-             {
-              Application.LoadLevel(Application.loadedLevel);
-              }
+            if (Input.GetKeyDown("space") && !GameIsOver)
+            {
+                Application.LoadLevel(Application.loadedLevel);
+            }
         }
     }
 
@@ -89,6 +92,7 @@ public class GameManager : MonoBehaviour
     {
         GameHasStarted = true;
         inMenu = false;
+        startText.enabled = false;
         Camera.main.transform.parent.GetComponent<Animator>().enabled = false;
         StartCoroutine(LerpPosition());
     }
